@@ -1,0 +1,8 @@
+## Interface: 82000
+## Title: Arena Filter
+## Notes: Filter premade arena group finder results by class and role
+## Author: Disco of Dark Iron[US]
+## Version: 1.0.0
+## SavedVariablesPerCharacter: ArenaFilter_Classes, ArenaFilter_Roles
+
+ArenaFilter.lua
