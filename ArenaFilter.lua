@@ -1,3 +1,4 @@
+local ADDON_NAME = ...
 local AF_LFG_LIST_CATEGORY_ARENAS = 4;
 
 local function AF_IsArenaGroupFinder()
@@ -149,16 +150,21 @@ local function AF_InitializeSavedVariables()
     end
 end
 
-local function AF_OnEvent(_, event)
+local AF = CreateFrame("Frame")
+
+local function AF_OnEvent(_, event, ...)
     if event == "ADDON_LOADED" then
-        AF_InitializeSavedVariables()
-        LFGListFrame.SearchPanel:SetScript("OnShow", AF_LFGListSearchPanel_OnShow)
+        local addonName = ...
+        if addonName == ADDON_NAME then
+            AF_InitializeSavedVariables()
+            LFGListFrame.SearchPanel:SetScript("OnShow", AF_LFGListSearchPanel_OnShow)
+            AF:UnregisterEvent("ADDON_LOADED")
+        end
     elseif event == "LFG_LIST_SEARCH_RESULTS_RECEIVED" then
         AF_FilterResultList()
     end
 end
 
-local AF = CreateFrame("Frame")
 AF:RegisterEvent("ADDON_LOADED")
 AF:RegisterEvent("LFG_LIST_SEARCH_RESULTS_RECEIVED")
 AF:SetScript("OnEvent", AF_OnEvent)
