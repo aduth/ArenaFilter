@@ -1,4 +1,4 @@
-## Interface: 82000
+## Interface: 90200
 ## Title: Arena Filter
 ## Notes: Filter premade arena group finder results by class and role
 ## Author: Disco of Dark Iron[US]
